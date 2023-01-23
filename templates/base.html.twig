@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        
+        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+        {% block stylesheets %}
+            <link href="./css/bootstrap.min.css" rel="stylesheet" type="text/css">
+            <link href="./css/elegant-icons.css" rel="stylesheet" type="text/css">
+            <link href="./css/font-awesome.min.css" rel="stylesheet" type="text/css">
+            <link href="./css/magnific-popup.css" rel="stylesheet" type="text/css">
+            <link href="./css/nice-select.css" rel="stylesheet" type="text/css">
+            <link href="./css/owl.carousel.min.css" rel="stylesheet" type="text/css">
+            <link href="./css/slicknav.min.css" rel="stylesheet" type="text/css">
+            <link href="./css/style.css" rel="stylesheet" type="text/css">
+            <link href="./css/carrousel.css" rel="stylesheet" type="text/css">
+        {% endblock %}  
+
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+            <script rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+            
+            <script src="./js/main.js"></script>
+            
+        {% endblock %}
+    </head>
+    <body>
+        {% block navbar %}
+            {% include "base/nav.html.twig" %}
+        {% endblock %}
+
+        {% block body %}
+        
+        {% endblock %} 
+
+        {% block footer %}
+            {% include "base/footer.html.twig" %}
+        {% endblock %} 
+
+    </body>
+</html>
