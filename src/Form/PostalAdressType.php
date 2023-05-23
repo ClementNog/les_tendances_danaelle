@@ -13,7 +13,7 @@ class PostalAddressType extends AbstractType
             ->add('address', TextType::class, [
                 'help' => 'Street address, P.O. box, company name',
             ])
-            ->add('addressLine2', TextType::class, [
+            ->add('number', TextType::class, [
                 'help' => 'Apartment, suite, unit, building, floor',
             ])
             ->add('city', TextType::class)

@@ -153,7 +153,7 @@ ol {
 .text-white span,
 .text-white li,
 .text-white a {
-	color: #fff;
+	color: rgb(65, 27, 27);
 }
 
 /* buttons */
@@ -2213,7 +2213,7 @@ ol {
 }
 
 .counter .container {
-	border-bottom: 1px solid #e5e5e5;
+	border-bottom: 1px solid #FBECDF;
 	padding-bottom: 70px;
 }
 
@@ -3849,4 +3849,14 @@ ol {
 	.categories__text:before {
 		height: 250px;
 	}
+
 }
+.imageclothe{
+	width:100px;
+	
+}
+.product-container {
+	display: flex;
+	flex-wrap: wrap;
+  }
+  

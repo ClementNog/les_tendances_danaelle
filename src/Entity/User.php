@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -40,8 +41,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 30, nullable: true)]
     private ?string $phone = null;
 
-    #[ORM\Column(length: 60)]
-    private ?string $address = null;
+    #[ORM\Column(type: Types::ARRAY)]
+    private array $address = [];
 
     public function getId(): ?int
     {
@@ -79,6 +80,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         // guarantee every user at least has ROLE_USER
         $roles[] = 'ROLE_USER';
         $roles[] = 'ROLE_Admin';
+
 
 
         return array_unique($roles);
@@ -151,12 +153,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getAddress(): ?string
+    public function getAddress(): array
     {
         return $this->address;
     }
 
-    public function setAddress(string $address): self
+    public function setAddress(array $address): self
     {
         $this->address = $address;
 
