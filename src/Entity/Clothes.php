@@ -31,9 +31,6 @@ class Clothes
     #[ORM\Column(length: 20)]
     private ?string $category = null;
 
-    #[ORM\OneToMany(mappedBy: 'clothes', targetEntity: Basket::class)]
-    private Collection $baskets;
-
     #[ORM\ManyToOne(inversedBy: 'clothes')]
     private ?Type $type = null;
 
@@ -42,14 +39,6 @@ class Clothes
 
     #[ORM\Column(type: 'string')]
     private $imagename;
-
-    public function __construct()
-    {
-        $this->likes = new ArrayCollection();
-        $this->baskets = new ArrayCollection();
-    }
-
-
 
     public function getId(): ?int
     {
@@ -112,46 +101,6 @@ class Clothes
     public function setCategory(string $category): self
     {
         $this->category = $category;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Likes>
-     */
-    public function getLikes(): Collection
-    {
-        return $this->likes;
-    }
-
-    
-
-    /**
-     * @return Collection<int, Basket>
-     */
-    public function getBaskets(): Collection
-    {
-        return $this->baskets;
-    }
-
-    public function addBasket(Basket $basket): self
-    {
-        if (!$this->baskets->contains($basket)) {
-            $this->baskets->add($basket);
-            $basket->setClothes($this);
-        }
-
-        return $this;
-    }
-
-    public function removeBasket(Basket $basket): self
-    {
-        if ($this->baskets->removeElement($basket)) {
-            // set the owning side to null (unless already changed)
-            if ($basket->getClothes() === $this) {
-                $basket->setClothes(null);
-            }
-        }
 
         return $this;
     }

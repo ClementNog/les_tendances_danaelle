@@ -5,18 +5,10 @@
 
 
     <!-- Breadcrumb Section End -->
-
-                   {# {{dump()}}
-                    {% for clothe in clothes %}
-                    {{ dump(clothe)}}
-                    {% endfor %} #}
-                    
-                        
                         {% for clothe in clothes %}
                         <div class ="product_wrapper">
                         <div class="col-lg-4 col-md-6 col-sm-6">
                             <div class="product__item sale">
-                            <h5>img/{{(clothe.imagefile)}}</h>
                                 <div class="product__item__pic set-bg">
                                 <img src="img/{{ clothe.imagefile }}"></img>
                                 {# <div class="product__item__pic set-bg" data-setbg="./img/"> #}
@@ -32,14 +24,7 @@
                                 <div class="product__item__text">
                                     <h6>{{clothe.description}}</h6>
                                     <a href="#" class="add-cart">+ Add To Cart</a>
-                                    <div class="rating">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-o"></i>
-                                    </div>
-                                    <h5>{{clothe.price}}</h5>
+                                    <h5>{{clothe.price}}€</h5>
                                     
                                     {# <h5>$55</h5> #}
                                     <div class="product__color__select">
@@ -57,17 +42,6 @@
                             </div>
                         </div>
                         {%  endfor %}
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="product__pagination">
-                                <a class="active" href="#">1</a>
-                                <a href="#">2</a>
-                                <a href="#">3</a>
-                                <span>...</span>
-                                <a href="#">21</a>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>

@@ -20,6 +20,22 @@ use Doctrine\Persistence\ManagerRegistry;
 //  */
 class ClothesController extends AbstractController
 {
+    #[Route('/clothes/{id}', name: 'app_clothes_show', methods: ['GET'])]
+    public function show(Clothes $clothes): Response
+    {
+        return $this->render('clothes/show.html.twig', [
+            'clothes' => $clothes,
+        ]);
+    }
+    #[Route('/clothes/delete/{id}', name: 'app_clothes_delete', methods: ['POST'])]
+    public function delete(Request $request, Clothes $clothes, ClothesRepository $clothesRepository): Response
+    {
+        if ($this->isCsrfTokenValid('delete'.$clothes->getId(), $request->request->get('_token'))) {
+            $clothesRepository->remove($clothes, true);
+        }
+
+        return $this->redirectToRoute('app_clothes_index', [], Response::HTTP_SEE_OTHER);
+    }
     #[Route('/newclothes', name: 'app_clothes_new', methods: ['GET', 'POST'])]
     public function new(Request $request, ClothesRepository $clothesRepository, SluggerInterface $slugger): Response
     {
@@ -73,22 +89,7 @@ class ClothesController extends AbstractController
         
 
     }
-    #[Route('/clothes/{id}', name: 'app_clothes_show', methods: ['GET'])]
-    public function show(Clothes $clothes): Response
-    {
-        return $this->render('clothes/show.html.twig', [
-            'clothes' => $clothes,
-        ]);
-    }
-    #[Route('/{id}', name: 'app_clothes_delete', methods: ['POST'])]
-    public function delete(Request $request, Clothes $clothes, ClothesRepository $clothesRepository): Response
-    {
-        if ($this->isCsrfTokenValid('delete'.$clothes->getId(), $request->request->get('_token'))) {
-            $clothesRepository->remove($clothes, true);
-        }
-
-        return $this->redirectToRoute('app_clothes_index', [], Response::HTTP_SEE_OTHER);
-    }
+    
     
     #[Route('/clothes', name: 'app_clothes_index', methods: ['GET'])]
     public function index(ClothesRepository $clothesRepository): Response

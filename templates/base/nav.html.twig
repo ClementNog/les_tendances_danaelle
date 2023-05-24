@@ -45,7 +45,6 @@
                         <ul>
                             <li class="active"><a href="{{ path('app_home_page')}}">Home</a></li>
                             <li><a href="{{ path('app_shop')}}">Shop</a></li>
-
                             <li><a href="{{ path('app_pages')}}">Pages</a>
                                 {# <ul class="dropdown">
                                     <li><a href="{{ path('app_pages')}}">About Us</a></li>
@@ -65,12 +64,10 @@
                 </div>
                 <div class="col-lg-3 col-md-3">
                     <div class="header__nav__option">
-                        <a href="#"><img src="./img/icon/heart.png" alt=""></a>
                         <a href="{{ path('app_register')}}"><img src="./img/icon/login.png" alt="login"></a>
 
-                        <a href="#"><img src="./img/icon/cart.png" alt=""> <span>0</span></a>
-
-                        <div class="price">$0.00</div>
+                        <a href=""><img src="./img/icon/cart.png" alt=""> <span>0</span></a>
+{# {{ path('app_basket')}} #}
                     </div>
                 </div>
             </div>

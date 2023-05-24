@@ -13,7 +13,7 @@ class BasketType extends AbstractType
     {
         $builder
             ->add('clothes')
-            ->add('users')
+            // ->add('users')
         ;
     }
 
